@@ -4,20 +4,20 @@ sudo: false
 
 android:
   components:
-  - tools
-  - platform-tools
-  - build-tools-24.0.2
-  - android-24
-  - extra-android-support
-  - extra-android-m2repository
+    - tools
+    - platform-tools
+    - build-tools-24.0.2
+    - android-24
+    - extra-android-support
+    - extra-android-m2repository
 
 licenses:
-  - 'android-sdk-preview-license-.+'
-  - 'android-sdk-license-.+'
-  - 'google-gdk-license-.+'
+  - android-sdk-preview-license-.+
+  - android-sdk-license-.+
+  - google-gdk-license-.+
 
 before_install:
-  - chmod +x gradlew
+  - openssl aes-256-cbc -K $encrypted_d19e33f04694_key -iv $encrypted_d19e33f04694_iv -in android.jks.enc -out keys/android.jks -d
 
 script:
   - "./gradlew assembleRelease"
