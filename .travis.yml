@@ -18,6 +18,10 @@ licenses:
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_d19e33f04694_key -iv $encrypted_d19e33f04694_iv -in keys/android.jks.enc -out keys/android.jks -d
+  - gem install fir-cli --no-ri --no-rdoc
 
 script:
   - "./gradlew assembleRelease"
+
+after_success:
+  - fir p app/build/outputs/apk/app-release.apk -T 84a4384316e66909d01447c671844902
